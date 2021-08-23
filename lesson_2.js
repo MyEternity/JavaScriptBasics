@@ -79,37 +79,37 @@ alert(b);                    // 3
     let func = function (input = 0) {
         switch (input) {
             case 0:
-                return 'Ноль';
+                return '0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15';
             case 1:
-                return 'Один';
+                return '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15';
             case 2:
-                return 'Два';
+                return '2,3,4,5,6,7,8,9,10,11,12,13,14,15';
             case 3:
-                return 'Три';
+                return '3,4,5,6,7,8,9,10,11,12,13,14,15';
             case 4:
-                return 'Четыре';
+                return '4,5,6,7,8,9,10,11,12,13,14,15';
             case 5:
-                return 'Пять';
+                return '5,6,7,8,9,10,11,12,13,14,15';
             case 6:
-                return 'Шесть';
+                return '6,7,8,9,10,11,12,13,14,15';
             case 7:
-                return 'Семь';
+                return '7,8,9,10,11,12,13,14,15';
             case 8:
-                return 'Восемь';
+                return '8,9,10,11,12,13,14,15';
             case 9:
-                return 'Девять';
+                return '9,10,11,12,13,14,15';
             case 10:
-                return 'Десять';
+                return '10,11,12,13,14,15';
             case 11:
-                return 'Одиннадцать';
+                return '11,12,13,14,15';
             case 12:
-                return 'Двенадцать';
+                return '12,13,14,15';
             case 13:
-                return 'Тринадцать';
+                return '13,14,15';
             case 14:
-                return 'Четырнадцать';
+                return '14,15';
             case 15:
-                return 'Пятнадцать';
+                return '15';
             default:
                 return 'Число за пределами интервала.'
         }
@@ -119,8 +119,54 @@ alert(b);                    // 3
     console.log(func(a))
 }
 
+console.log('---- Task 5 ----');
+
+function v_add(val1 = 0, val2 = 0) {
+    return val1 + val2
+}
+
+function v_sub(val1 = 0, val2 = 0) {
+    return val1 - val2
+}
+
+function v_div(val1 = 0, val2 = 0) {
+    return val1 / val2
+}
+
+function v_mul(val1 = 0, val2 = 0) {
+    return val1 * val2
+}
+
 {
-    console.log('---- Task 5, 6 ----');
+    console.log('---- Task 6 ----');
+    let mathOperation = function (arg1 = 0, arg2 = 0, operation = '+') {
+        switch (operation) {
+            case '+':
+                return v_add(arg1, arg2);
+            case '-':
+                return v_sub(arg1, arg2);
+            case '/':
+                if (arg2 === 0)
+                    return NaN
+                else return v_div(arg1, arg2);
+            case '*':
+                return v_mul(arg1, arg2);
+            default:
+                return NaN
+        }
+    }
+
+    console.log(mathOperation(10, 2, '+'));
+    console.log(mathOperation(10, 2, '-'));
+    console.log(mathOperation(10, 2, '*'));
+    console.log(mathOperation(10, 2, '/'));
+    console.log(mathOperation(10, 0, '/'));
+
+}
+
+
+{
+    console.log('---- Task 5, 6 (alternative) ----');
     // Сделаем сразу одну общую функцию, и не будем плодить код.
     let func = function (op1 = 0, op2 = 0, operation = '+') {
         switch (operation) {
