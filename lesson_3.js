@@ -10,6 +10,7 @@
 
 3. *Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла. Выглядеть это должно так:
     for(…){// здесь пусто}
+
 4. *Нарисовать пирамиду с помощью console.log, как показано на рисунке,
     только у вашей пирамиды должно быть 20 рядов, а не 5:
         x
@@ -19,3 +20,79 @@
         xxxxx
 
  */
+
+{
+    // Функция определяющая является ли число простым или нет.
+    function prime_value(n) {
+        if (n === 1)
+            return false;
+        for (d = 2; d * d <= n; d++) {
+            if (n % d === 0)
+                return false;
+        }
+        return true;
+    }
+
+    console.log('---- Task 1 ----');
+
+    let arr = [];
+    let x = 1;
+    // Цикл While по ТЗ.
+    while (x <= 100) {
+        if (prime_value(x))
+            // Собираем в массив.
+            arr.push(x)
+        x++;
+    }
+    // Выводим.
+    console.log(arr)
+
+}
+
+{
+    console.log('---- Task 2 ----');
+    // Создадим массив.
+    let bucket = [];
+    // Заполним простыми данными.
+    for (let n = 0; n < 10; n++) {
+        // В массиве храним объекты.
+        let ware = {}
+        // У каждого товара будет "имя".
+        ware['name'] = 'ware' + n + 1;
+        // И ценник.
+        ware['price'] = (n + 1) * 100;
+        bucket.push(ware);
+        console.log('В корзину поместили товар: ', ware);
+    }
+
+    function countBasketPrice(b = []) {
+        let x = 0;
+        // Обойдем все элементы корзины, которую нам передали.
+        for (let el in b) {
+            // И извлечем стоимость товаров в ней.
+            x = x + bucket[el]["price"];
+        }
+        return x;
+    }
+
+    console.log('Общая стоимость товаров в корзине: ', countBasketPrice(bucket));
+}
+
+{
+    console.log('---- Task 3 ----');
+    for (let n = 0; n <= 9; console.log(n) & n++) {
+    }
+}
+
+{
+    console.log('---- Task 4 ----');
+    let n = 1;
+    while (n <= 20) {
+        let t = 'x';
+        for (let x = 1; x < n; x++)
+            t = t + 'x'
+        console.log(t);
+        n++;
+    }
+
+}
