@@ -7,42 +7,42 @@
 <body>
 
 <script>
-    function draw(){
+    function draw() {
         let board = document.createElement('chessBoard');
         let flag = true;
         let trr = document.createElement('tr');
-        let arr = [' ','a','b','c','d','e','f','g','h'];
+        let arr = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
         //генерим ячейки
-        for(let i = 0; i<8; i++){
+        for (let i = 0; i < 8; i++) {
             let tr = document.createElement('tr');
             //создаем ячейку для цифр
             let tdd = document.createElement('td');
-            tdd.style.width='60px';
-            tdd.style.height='60px';
-            tdd.innerHTML=8-i;
+            tdd.style.width = '60px';
+            tdd.style.height = '60px';
+            tdd.innerHTML = 8 - i;
             tr.appendChild(tdd);
-            for(let j=0; j<8; j++){
-                if(j==0)
-                    flag=!flag;
+            for (let j = 0; j < 8; j++) {
+                if (j == 0)
+                    flag = !flag;
                 let td = document.createElement('td');
-                td.style.width='60px';
-                td.style.height='60px';
-                if(flag){
-                    td.style.background='black';
-                }else
-                    td.style.background='white';
+                td.style.width = '60px';
+                td.style.height = '60px';
+                if (flag) {
+                    td.style.background = 'black';
+                } else
+                    td.style.background = 'white';
                 tr.appendChild(td);
-                flag=!flag;
+                flag = !flag;
             }
             board.appendChild(tr);
         }
         //генерим буквы
-        for(let k = 0; k<9; k++){
+        for (let k = 0; k < 9; k++) {
             let td = document.createElement('td');
-            td.style.width='50px';
-            td.style.height='50px';
-            td.style.background='white';
-            td.innerHTML=arr[k];
+            td.style.width = '50px';
+            td.style.height = '50px';
+            td.style.background = 'white';
+            td.innerHTML = arr[k];
             trr.appendChild(td);
         }
         board.appendChild(trr);
