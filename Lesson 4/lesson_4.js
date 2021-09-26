@@ -23,7 +23,7 @@
     console.log('---- Task 1 ----');
 
     function digit_to_obj(src = 0) {
-        let keys = 'единицы десятки сотни'.split(' ');
+        let keys = ['единицы', 'десятки', 'сотни'];
         let obj = {}
         // Проверим что число в заданном диапазоне.
         if (0 > src || src > 999) {
@@ -50,48 +50,46 @@
 
 {
     console.log('---- Task 2 ----');
-    // Будем хранить все в объекте "Товар".
-    // при желании данный объект можно расширить как угодно в дальнейшем.
-    function Ware(ware_name = 'Name', price = 1, quantity = 1, discount = 0) {
-        this.ware_name = ware_name;
-        this.price = price;
-        this.quantity = quantity;
-        this.discount = discount;
-
-        this.finalPrice = function () {
-            if (this.discount !== 0) {
-                return this.price - this.price * this.discount / 100;
-            } else {
-                return this.price;
+    const basket = {
+        sum: 0, //Общая сумма
+        dsum: 0, //Общая сумма со скидкой.
+        goods: {}, // Массив товаров
+        sumBasket: function () {
+            let sum = 0;
+            let dsum = 0;
+            for (var key in this.goods) {
+                const elem = this.goods[key]; // получить товар по ключу
+                sum += elem.count * elem.price;
+                dsum += elem.count * (elem.price - elem.discount)
             }
-        };
-
-        this.showOrder = function () {
-            return `${this.ware_name} (количество: ${this.quantity})`;
-        };
-    }
-
-    let order = []
-    order.push(new Ware('Пряники', 100, 2, 12));
-    order.push(new Ware('Вареники', 124, 3, 0));
-    order.push(new Ware('Пельмешки', 99.1, 2, 15));
-
-    // Функция подсчета корзины - для пример в двух вариантах расчета.
-    function getCart(order = []) {
-        let totPrice = 0;
-        let disPrice = 0;
-        for (let el in order) {
-            totPrice = totPrice + order[el]['price'] * order[el]['quantity'];
-            disPrice = disPrice + order[el]['price'] * order[el]['quantity'] - order[el]['discount'] * order[el]['quantity'];
+            this.sum = sum;
+            this.dsum = dsum
+            return sum, dsum;
         }
-        console.log('Заказ: ');
-        console.log('Всего наименований: ', order.length);
-        console.log('Сумма без скидки: ', totPrice);
-        console.log('Сумма со скидкой: ', disPrice);
-    }
+    };
 
-    getCart(order);
-}
+    const Пряники = {
+        price: 320,
+        count: 2,
+        discount: 10
+    };
+
+    const Печеньки = {
+        price: 840,
+        count: 1,
+        discount: 10
+    };
+
+    const Вареники = {
+        price: 550,
+        count: 3,
+        discount: 10
+    };
+
+    basket.goods = { Пряники, Печеньки, Вареники };
+    basket.sumBasket();
+    console.log(basket.sum, basket.dsum);
+};
 
 {
     console.log('---- Task 3 ----');
